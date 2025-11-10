@@ -23,76 +23,22 @@ body, html { margin:0; padding:0; overflow:hidden; }
 <a-entity gltf-model="url(assets/model.glb)" position="0 0 0" scale= "0.5 0.5 0.5"></a-entity> 
 <!-- 原点に簡単な立方体を表示 --> 
  <!-- === ケーキ本体（1/3スケール） === -->
-<a-cylinder position="0 0 -4" radius="0.67" height="0.27" color="#FFC0CB"></a-cylinder>
-<a-cylinder position="0 0.13 -4" radius="0.68" height="0.03" color="#FFE4F1"></a-cylinder>
-<a-cylinder position="0 0.3 -4" radius="0.43" height="0.2" color="#FFB6C1"></a-cylinder>
-<a-cylinder position="0 0.4 -4" radius="0.45" height="0.03" color="#FFE4F1"></a-cylinder>
+<a-cylinder position="0 0 0" radius="0.67" height="0.27" color="#FFC0CB"></a-cylinder>
+<a-cylinder position="0 0.13 0" radius="0.68" height="0.03" color="#FFE4F1"></a-cylinder>
+<a-cylinder position="0 0.3 0" radius="0.43" height="0.2" color="#FFB6C1"></a-cylinder>
+<a-cylinder position="0 0.4 0" radius="0.45" height="0.03" color="#FFE4F1"></a-cylinder>
 
 <!-- === ろうそくと炎（1/3スケール） === -->
-<a-cylinder position="0 0.53 -4" radius="0.017" height="0.2" color="#ADD8E6"></a-cylinder>
-<a-cylinder position="0.13 0.53 -4" radius="0.017" height="0.2" color="#ADD8E6"></a-cylinder>
-<a-cylinder position="-0.13 0.53 -4" radius="0.017" height="0.2" color="#ADD8E6"></a-cylinder>
+<a-cylinder position="0 0.53 0" radius="0.017" height="0.2" color="#ADD8E6"></a-cylinder>
+<a-cylinder position="0.13 0.53 0" radius="0.017" height="0.2" color="#ADD8E6"></a-cylinder>
+<a-cylinder position="-0.13 0.53 0" radius="0.017" height="0.2" color="#ADD8E6"></a-cylinder>
 
-<a-cone position="0 0.65 -4" radius-bottom="0.023" height="0.05" color="#FFD700"
+<a-cone position="0 0.65 0" radius-bottom="0.023" height="0.05" color="#FFD700"
          animation="property: position; dir: alternate; dur: 600; loop: true; to: 0 0.66 -4"></a-cone>
-<a-cone position="0.13 0.65 -4" radius-bottom="0.023" height="0.05" color="#FFD700"
+<a-cone position="0.13 0.65 0" radius-bottom="0.023" height="0.05" color="#FFD700"
          animation="property: position; dir: alternate; dur: 600; loop: true; to: 0.13 0.66 -4"></a-cone>
-<a-cone position="-0.13 0.65 -4" radius-bottom="0.023" height="0.05" color="#FFD700"
+<a-cone position="-0.13 0.65 0" radius-bottom="0.023" height="0.05" color="#FFD700"
          animation="property: position; dir: alternate; dur: 600; loop: true; to: -0.13 0.66 -4"></a-cone>
-
-<!-- === 🍓いちご配置スクリプト（位置ぴったりに修正） === -->
-<script>
-  const scene = document.querySelector('a-scene');
-
-  // ==== 下段いちご ====
-  const bottomCount = 8;
-  const bottomY = 0.15;   // ケーキ上の高さをぴったりに調整
-  const bottomR = 0.55;   // ケーキより少し内側
-  for (let i = 0; i < bottomCount; i++) {
-    const angle = (i / bottomCount) * Math.PI * 2;
-    const x = bottomR * Math.cos(angle);
-    const z = -4 + bottomR * Math.sin(angle);
-
-    const strawberry = document.createElement('a-sphere');
-    strawberry.setAttribute('position', `${x} ${bottomY} ${z}`);
-    strawberry.setAttribute('radius', '0.05');
-    strawberry.setAttribute('color', '#E62E2E');
-    strawberry.setAttribute('scale', '1 1.3 1');
-    scene.appendChild(strawberry);
-
-    const leaf = document.createElement('a-cone');
-    leaf.setAttribute('position', `${x} ${bottomY + 0.06} ${z}`);
-    leaf.setAttribute('radius-bottom', '0.04');
-    leaf.setAttribute('radius-top', '0');
-    leaf.setAttribute('height', '0.017');
-    leaf.setAttribute('color', '#228B22');
-    scene.appendChild(leaf);
-  }
-
-  // ==== 上段いちご ====
-  const topCount = 6;
-  const topY = 0.37;   // 上段ケーキの上面に一致
-  const topR = 0.37;   // ケーキの半径よりやや内側
-  for (let i = 0; i < topCount; i++) {
-    const angle = (i / topCount) * Math.PI * 2;
-    const x = topR * Math.cos(angle);
-    const z = -4 + topR * Math.sin(angle);
-
-    const strawberry = document.createElement('a-sphere');
-    strawberry.setAttribute('position', `${x} ${topY} ${z}`);
-    strawberry.setAttribute('radius', '0.04');
-    strawberry.setAttribute('color', '#E62E2E');
-    strawberry.setAttribute('scale', '1 1.3 1');
-    scene.appendChild(strawberry);
-
-    const leaf = document.createElement('a-cone');
-    leaf.setAttribute('position', `${x} ${topY + 0.045} ${z}`);
-    leaf.setAttribute('radius-bottom', '0.033');
-    leaf.setAttribute('radius-top', '0');
-    leaf.setAttribute('height', '0.013');
-    leaf.setAttribute('color', '#228B22');
-    scene.appendChild(leaf);
-  }
 </script>
  
  
